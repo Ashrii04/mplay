@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Hub - Professional Music Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+      </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-music"></i> Music Hub
+            </a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('home')" class="active">Home</a></li>
+                <li><a href="#" onclick="showSection('player')">Music Player</a></li>
+                <li><a href="#" onclick="showSection('about')">About</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Home Section -->
+        <div id="home" class="section active">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>Welcome to Music Hub</h1>
+                    <p>Experience music like never before with our professional music player. Upload your favorite tracks or stream from online sources.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showSection('player')">
+                            <i class="fas fa-play"></i> Start Playing
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('about')">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <h3>Local File Support</h3>
+                        <p>Upload and play your personal music collection with support for MP3, WAV, OGG, and more audio formats.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Online Streaming</h3>
+                        <p>Stream music directly from online sources by adding direct links to audio files from anywhere on the web.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <h3>Playlist Management</h3>
+                        <p>Create and manage your playlists with shuffle, repeat modes, and seamless track navigation controls.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3>Advanced Controls</h3>
+                        <p>Enjoy professional audio controls including volume adjustment, progress seeking, and keyboard shortcuts.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Responsive Design</h3>
+                        <p>Experience seamless music playback across all devices with our fully responsive and modern interface.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Professional UI</h3>
+                        <p>Enjoy a clean, modern interface designed for both casual listeners and professional music enthusiasts.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Music Player Section -->
+        <div id="player" class="section">
+            <section class="player-section">
+                <div class="section-header">
+                    <h2>Music Player</h2>
+                    <p>Your personal music experience starts here</p>
+                </div>
+                
+                <div class="music-player">
+                    <div class="player-container">
+                        <!-- Playlist Section -->
+                        <div class="playlist-section">
+                            <h3>Playlist</h3>
+                            <div class="playlist" id="playlist">
+                                <!-- Playlist items will be populated by JavaScript -->
+                            </div>
+                            <div class="playlist-controls">
+                                <button id="shuffle-btn" class="playlist-btn">
+                                    <i class="fas fa-shuffle"></i> Shuffle
+                                </button>
+                                <button id="repeat-btn" class="playlist-btn">
+                                    <i class="fas fa-repeat"></i> Repeat
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Main Player Section -->
+                        <div class="main-player">
+                            <!-- Song Info Display -->
+                            <div class="song-info">
+                                <div class="album-art">
+                                    <img id="album-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z'/%3E%3C/svg%3E" alt="Album Art">
+                                </div>
+                                <div class="track-details">
+                                    <h2 id="song-title">Select a song to play</h2>
+                                    <p id="song-artist">Unknown Artist</p>
+                                    <div class="time-info">
+                                        <span id="current-time">0:00</span>
+                                        <span id="total-time">0:00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Progress Bar -->
+                            <div class="progress-container">
+                                <div class="progress-bar" id="progress-bar">
+                                    <div class="progress-fill" id="progress-fill"></div>
+                                    <div class="progress-handle" id="progress-handle"></div>
+                                </div>
+                            </div>
+
+                            <!-- Control Buttons -->
+                            <div class="controls">
+                                <button id="prev-btn" class="control-btn">
+                                    <i class="fas fa-step-backward"></i>
+                                </button>
+                                <button id="play-pause-btn" class="control-btn play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button id="next-btn" class="control-btn">
+                                    <i class="fas fa-step-forward"></i>
+                                </button>
+                            </div>
+
+                            <!-- Volume Control -->
+                            <div class="volume-container">
+                                <button id="mute-btn" class="volume-btn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <div class="volume-slider-container">
+                                    <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="70">
+                                </div>
+                                <span id="volume-display">70%</span>
+                            </div>
+
+                            <!-- Loading State -->
+                            <div id="loading-indicator" class="loading-indicator" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>Loading...</span>
+                            </div>
+
+                            <!-- Error Message -->
+                            <div id="error-message" class="error-message" style="display: none;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span id="error-text">Error loading audio file</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Section -->
+        <div id="about" class="section">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>About Music Hub</h1>
+                    <p>Music Hub is a professional-grade web-based music player designed for music enthusiasts who demand quality and functionality. Built with modern web technologies, it offers a seamless experience across all devices.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showSection('player')">
+                            <i class="fas fa-play"></i> Try the Player
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contact" class="section">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>Get in Touch</h1>
+                    <p>Have questions or feedback about Music Hub? We'd love to hear from you. Contact us for support or feature requests.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showSection('home')">
+                            <i class="fas fa-home"></i> Back to Home
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="audio-player" preload="metadata"></audio>
+
+    <!-- File Upload Section -->
+    <div class="upload-section">
+        <input type="file" id="file-input" accept="audio/*" multiple style="display: none;">
+        <button id="upload-btn" class="upload-btn">
+            <i class="fas fa-plus"></i> Add Songs
+        </button>
+        <button id="url-btn" class="upload-btn url-btn">
+            <i class="fas fa-link"></i> Add from URL
+        </button>
+    </div>
+
+    <!-- URL Input Modal -->
+    <div id="url-modal" class="url-modal" style="display: none;">
+        <div class="url-modal-content">
+            <div class="url-modal-header">
+                <h3>Add Song from URL</h3>
+                <button id="close-modal" class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="url-modal-body">
+                <p>Enter a direct link to an audio file (MP3, WAV, OGG, etc.)</p>
+                <input type="url" id="url-input" placeholder="https://example.com/song.mp3" class="url-input">
+                <div class="url-modal-buttons">
+                    <button id="cancel-url" class="cancel-btn">Cancel</button>
+                    <button id="add-url" class="add-url-btn">Add Song</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Music Hub. Built with modern web technologies for the ultimate music experience.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
